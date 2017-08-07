@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head> </head>
+
+<body>
+    <script>
+        function phonePerchaser() {
+
+            this.phonePrice = 849.00,
+                this.accsPrice = 39.00
+            this.tax = 0.17
+            this.getPhoneCostWithTax = function (phonePrice, tax) { return phonePrice + phonePrice * tax }
+            this.getaccsseryCostWithTax = function (accsPrice, tax) { return accsPrice + accsPrice * tax }
+            this.claculate = function (wallet, phoneCost, accsseryCost) {
+                var phonecount = 0;
+                var accsseryCount = 0;
+                var temp = wallet;
+                while (wallet > accsseryCost) {
+
+                    if (wallet > phoneCost) {
+                        wallet = wallet - phoneCost;
+                        phonecount++;
+                    }
+                    else {
+                        wallet = wallet - accsseryCost
+                        accsseryCount++
+                    }
+
+                }
+                return "You can purchase " + phonecount + " smartphones and " + accsseryCount + " smartphone accessories with total cost of " + (temp - wallet) + " NIS."
+            }
+        }
+        phonePerchaser.prototype.wallet = 7000.00;
+
+        var pp = new phonePerchaser()
+
+
+        var phoneCost = pp.getPhoneCostWithTax(pp.phonePrice, pp.tax)
+        var accsCost = pp.getaccsseryCostWithTax(pp.accsPrice, pp.tax)
+        var result = pp.claculate(pp.wallet, phoneCost, accsCost)
+        console.log(result)
+    </script>
+</body>
+
+</html>
